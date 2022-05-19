@@ -16,7 +16,7 @@
             <div class="col-9 store-content">
                 <h2><%= product.title %></h2>
                 <p>
-                    <%= sanitize(product.description) %>
+                    <%= product.body %>
                 </p>
                 <div class="price">
                     <%= number_to_currency(product.price) %>

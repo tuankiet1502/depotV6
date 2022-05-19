@@ -11,40 +11,47 @@
                     <%=support_request.body%>
                 </blockquote>
             </p>
-            <%if support_request.order%>
-                <h3></h3>
-                <dl>
-                    <dt>Name</dt>
-                    <dd><%= support_request.order.name %></dd>
+            <h3>Orders lits:</h3>
+            <div class="orders-list">
+            <% if support_request.order %>
+                <%@orders.each do |order|%>
+                    <% if order.email === support_request.order.email %>
+                        <hr>
+                        <dl>
+                            <dt>Name</dt>
+                            <dd><%= order.name %></dd>
 
-                    <dt>Email</dt>
-                    <dd><%= support_request.order.email %></dd>
+                            <dt>Email</dt>
+                            <dd><%= order.email %></dd>
 
-                    <dt>Address</dt>
-                    <dd><%= support_request.order.address %></dd>
+                            <dt>Address</dt>
+                            <dd><%= order.address %></dd>
 
-                    <dt>PayType</dt>
-                    <dd><%= support_request.order.pay_type %></dd>
+                            <dt>PayType</dt>
+                            <dd><%= order.pay_type %></dd>
 
-                    <dt>Line Items</dt>
-                    <dd>
-                        <ul>
-                            <% support_request.order.line_items.each do |line_item| %>
-                                <li>
-                                    <%= line_item.product.title %>
-                                    (<%= line_item.product.price %>)
-                                </li>
-                            <% end %>
-                        </ul>
-                    </dd>
-                </dl>
+                            <dt>Line Items</dt>
+                            <dd>
+                                <ul>
+                                    <%order.line_items.each do |line_item| %>
+                                        <li>
+                                            <%= line_item.product.title %>
+                                            (<%= line_item.product.price %>)
+                                        </li>
+                                    <% end %>
+                                </ul>
+                            </dd>
+                        </dl>
+                    <% end %>
+                <%end%>
             <%else%>
                 <h3 class="notice">No associated order</h3>
             <%end%>
+            </div>
             <%if support_request.response.blank?%>
                 <%= form_with(model: support_request, local: true, class: "depot_form") do |form| %>
                     <div class="field">
-                        <%= form.label :response, "Write Response" %>
+                        <h4><%= form.label :response, "Write Response" %></h4>
                         <%= form.rich_text_area :response, id: :support_request_response %>
                     </div>
                     <div class="actions">

@@ -233,4 +233,12 @@ nav.logged_in_nav {
     margin: 50px 50px 50px 50px;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 3px black;
+
+    ul {
+        padding-right: 2rem;
+    }
+    .orders-list {
+        height: 300px;
+        overflow: scroll;
+    }
 }
