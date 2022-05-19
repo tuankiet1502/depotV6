@@ -1,6 +1,10 @@
 .store {
     max-width: 100%;
     background-color: white;
+    margin: 10px 50px 50px 50px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px black;
     ul.catalog {
         border-top: solid 0.250em;
         list-style: none;
@@ -42,21 +46,20 @@
     input[type="submit"]:hover {
         background-color: #141;
     }
+    .store-content {
+        display: grid;
+    }
+    .store_image {
+        padding: 1em;
+        box-shadow:  0.176em 0.176em 0.354em 0px rgba(0, 0, 0, 0.75);;
+    }
+    .price {
+        display: flex;
+        align-items: center;
+        bottom: 10px;
+    }
+    .btn-add-to-cart {
+        margin-left: 10px;
+    }
 }
 
-.store_image {
-    padding: 1em;
-    box-shadow:  0.176em 0.176em 0.354em 0px rgba(0, 0, 0, 0.75);;
-}
-.store-content {
-    position: relative;
-}
-.price {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 10px;
-}
-.btn-add-to-cart {
-    margin-left: 10px;
-}
