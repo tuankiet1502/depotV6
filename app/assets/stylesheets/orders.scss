@@ -1,3 +1,24 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.orders {
+    background-color: white;
+    padding: 10px;
+    margin: 50px 50px 50px 50px;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 3px 3px 3px 3px black;
+
+    table {
+        width: 100%;
+    }
+    
+    a { 
+      text-decoration: none;
+      
+      &:hover {
+          background-color: unset;
+          color: brown;
+      }
+    }
+}

@@ -22,34 +22,36 @@
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <h1><%= @page_title %></h1>
     </header>
-    <section class="content">
-      <nav class="side_nav">
-        <%if @cart%>
-          <div id="cart" class="carts">
-            <%= render_if @cart && @cart.line_items.any?, @cart %>
-          </div>
-        <%end%>
-        <ul>
-          <li><%=link_to t('.home'), store_index_path(locale: I18n.locale)%></li>
-          <li><%=link_to t('.questions'), support_requests_path(locale: I18n.locale)%></li>
-          <li><a href="/news"><%=t('.news')%></a></li>
-          <li><a href="/contact"><%=t('.contact')%></a></li>
-        </ul>
-        <%if session[:user_id]%>
-        <nav class="logged_in_nav">
-          <ul>
-            <li><%=link_to t('.orders'), orders_path(locale: I18n.locale)%></li>
-            <li><%=link_to t('.products'), products_path(locale: I18n.locale)%></li>
-            <li><%=link_to t('.users'), users_path(locale: I18n.locale)%></li>
-            <li><%= button_to t('.logout'), logout_path(locale: I18n.locale), method: :delete %></li>
+      <div class="row nav-bar">
+        <div class="col-md-12 col-lg-3 nav-content">
+          <nav class="side_nav">
+          <%if @cart%>
+            <div id="cart" class="carts">
+              <%= render_if @cart && @cart.line_items.any?, @cart %>
+            </div>
+          <%end%>
+          <ul class="nav-actions">
+            <li><%=link_to t('.home'), store_index_path(locale: I18n.locale)%></li>
+            <li><%=link_to t('.questions'), support_requests_path(locale: I18n.locale)%></li>
           </ul>
-        </nav>
-      <%end%>
-      </nav>
-      <main class='<%= controller.controller_name %>'>
-        <%= yield %>
-      </main>
-    </section>
+          <%if session[:user_id]%>
+            <nav class="logged_in_nav">
+              <ul class="nav-actions">
+                <li><%=link_to t('.orders'), orders_path(locale: I18n.locale)%></li>
+                <li><%=link_to t('.products'), products_path(locale: I18n.locale)%></li>
+                <li><%=link_to t('.users'), users_path(locale: I18n.locale)%></li>
+                <li class="logout-block"><%= button_to t('.logout'), logout_path(locale: I18n.locale), method: :delete %></li>
+              </ul>
+            </nav>
+          <%end%>
+          </nav>
+        </div>
+        <div class="col-md-12 col-lg-9 main-content">
+          <main class='<%= controller.controller_name %>'>
+            <%= yield %>
+          </main>
+        </div> 
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript">
         I18n.defaultLocale = "<%=I18n.default_locale%>"

@@ -9,7 +9,7 @@
     <li>
         <div class="row">
             <div class="col-3">
-                <form class="store_image" method="post" action="/line_items?product_id=<%=product.id%>" data-remote="true">
+                <form class="store_image" method="post" action="/line_items?product_id=<%=product.id%>&locale=<%=I18n.locale%>" data-remote="true">
                     <%=image_submit_tag(product.image_url, class: "w-100")%>
                 </form>
             </div>

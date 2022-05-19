@@ -17,6 +17,9 @@ body {
     margin: 0;
     padding: 0;
 }
+html,body {
+    height: 100%;
+}
 input:active {
     transform: translateY(4px);
 }
@@ -42,59 +45,9 @@ header.main {
     padding: 1em 1.414em;
     text-align: center;
 }
-.content {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: column; // mobile is horizontally laid out
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-
-    @media (min-width: 30em) {
-        flex-direction: row; // desktop is vertically laid out
-        -webkit-box-orient: horizontal;
-    }
-    nav {
-        padding-bottom: 1em;
-        background: #141;
-        text-align: center; // mobile has centered nav
-        @media (min-width: 30em) {
-            text-align: left; // desktop nav is left-aligned
-            padding: 1em; // and needs more padding
-        }
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-
-            @media (min-width: 30em) {
-                padding-right: 1em; // give desktop some extra space
-            }
-
-            li {
-                margin: 0;
-                padding: 0.5em;
-                text-transform: uppercase;
-                letter-spacing: 0.354em;
-                
-                a {
-                    color: #bfb;
-                    text-decoration: none;
-                }
-                a:hover {
-                    background: none;
-                    color: white;
-                }
-            }
-        }
-    }
-    main {
-        padding: 0.5em;
-    }
-}
 
 #cart {
+    margin-bottom: 20px;
     article {
         
         h2 {
@@ -193,7 +146,7 @@ header.main {
     }
 }
 nav.logged_in_nav {
-    border-top: solid thin #bfb;
+    border-top: solid 3px #bfb;
     padding: 0.354em 0;
     margin-top: 0.354em;
 
@@ -218,4 +171,66 @@ nav.logged_in_nav {
     float: right;
     margin: 1em;
 }
+.nav-bar {
+    height: 100%;
+    .nav-content {
+        background-color: darkgreen;
+        padding: 10px 10px 0px 20px !important;
+        .nav-actions {
+            list-style: none;
+            line-height: 30px;
+            font-size: 20px;
+            padding-left: 0;
+            margin-top: 10px;
+
+            li {
+                background-color: green;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .logout-block {
+                background-color: darkred;
+                &:hover {
+                    background-color: brown;
+                }
+                input {
+                    color: white;
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+        }
     
+        a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            &:hover {
+                background-color: unset;
+            }
+        }
+        
+        li {
+            &:hover {
+                background-color: darkgreen;
+            }
+        }
+    }
+    .main-content {
+        display: flex;
+        justify-content: center;
+        background-image: url('background.png');
+        padding-left: 0;
+    }
+}
+
+.support_requests {
+    background: white;
+    padding: 10px;
+    width: 100%;
+    margin: 50px 50px 50px 50px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px black;
+}

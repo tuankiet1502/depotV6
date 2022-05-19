@@ -1,9 +1,18 @@
 .products {
     margin: 0;
     padding: 0.5em;
-    a {
-        padding: 0.354em 0.5em;
-        border-radius: 0.354em;
+    background-color: white;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 3px 3px 3px 3px black;
+    margin: 50px 50px 50px 50px;
+    a { 
+        text-decoration: none;
+        
+        &:hover {
+            background-color: unset;
+            color: brown;
+        }
     }
     table {
         border-collapse: collapse;
