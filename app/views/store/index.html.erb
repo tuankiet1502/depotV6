@@ -1,0 +1,31 @@
+<% if notice %>
+    <aside id="notice"><%= notice %></aside>
+<% end %>
+<h1 id="store_title"><%=t('.title_html')%> <%=session[:counter] if session[:counter] && session[:counter] > 5%></h1>
+<ul class="catalog">
+    <%= cache @products do%>
+    <% @products.each do |product| %>
+    <%= cache product do%>
+    <li>
+        <div class="row">
+            <div class="col-3">
+                <form class="store_image" method="post" action="/line_items?product_id=<%=product.id%>" data-remote="true">
+                    <%=image_submit_tag(product.image_url, class: "w-100")%>
+                </form>
+            </div>
+            <div class="col-9 store-content">
+                <h2><%= product.title %></h2>
+                <p>
+                    <%= sanitize(product.description) %>
+                </p>
+                <div class="price">
+                    <%= number_to_currency(product.price) %>
+                    <%= button_to t('.add_html'), line_items_path(product_id: product, locale: I18n.locale),class: 'btn-add-to-cart' ,remote: true %>
+                </div>
+            </div>
+        </div>
+    </li>
+    <% end %>
+    <% end %>
+    <% end %>
+</ul>

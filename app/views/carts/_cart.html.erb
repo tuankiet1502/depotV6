@@ -1,0 +1,22 @@
+<%unless cart.line_items.empty?%>
+<article>
+    <h2><%=t('.title')%></h2>
+    <table>
+        <%= render(cart.line_items) %>
+        <tfoot>
+            <tr>
+                <th colspan="2">Total: </th>
+                <th class="cart-price"><%= number_to_currency(cart.total_price(I18n.locale)) %></th>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="actions">
+        <%= button_to t('.empty'), cart, method: :delete, data: { confirm: 'Are you sure?' } , remote: true %>
+        <%= button_to t('.checkout'), new_order_path(locale: I18n.locale),
+            method: :get,
+            class: "checkout",
+            id: "checkout"
+        %>
+    </div>
+</article>
+<%end%>

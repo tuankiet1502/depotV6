@@ -1,0 +1,17 @@
+
+<p>
+Order details<br>
+--------------------------
+</p>
+<p>Name: <%= @order.name %></p>
+<p>Email: <%= @order.email %></p>
+<p>Address: <%= @order.address %></p>
+<p>Thank you for your recent order from The Pragmatic Store.</p>
+<p>
+  <%@order.line_items.each do |line_item|%>
+
+  <p><%=line_item.quantity%>x <%=line_item.product.title%> -- $<%=line_item.total_price(I18n.locale)%><p>
+  <%end%>
+  <h4>Total: $<%= @order.line_items.to_a.sum { |item| item.total_price(I18n.locale) } %></h4>
+  <p>We'll send you a separate email when your order ships.</p>
+</p>
