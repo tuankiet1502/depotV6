@@ -16,3 +16,9 @@ RUN gem install bundler
 RUN bundle install 
 COPY yarn.lock package.json ./
 RUN yarn install
+
+COPY . /depotV6
+
+EXPOSE 3000 80
+ENTRYPOINT ["bundle", "exec"]
+CMD ["rails", "server", "-b", "0.0.0.0"]
