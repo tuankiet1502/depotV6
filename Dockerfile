@@ -16,7 +16,8 @@ RUN gem install bundler
 RUN bundle install 
 COPY yarn.lock package.json ./
 RUN yarn install
-
+RUN rails action_text:install
+RUN rails db:migrate
 COPY . /depotV6
 
 EXPOSE 3000 80
