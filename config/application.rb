@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module DepotV6
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.web_console.permissions = '172.19.0.1'
     config.load_defaults 6.1
     config.filter_parameters += [ :credit_card_number ]
     config.middleware.use I18n::JS::Middleware

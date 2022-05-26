@@ -1,9 +1,16 @@
 version: '3'
 services:
   db:
-    image: nouchka/sqlite3:latest
+    image: mysql:8.0.29
+    user: "1000:50"
+    environment:
+      MYSQL_ROOT_PASSWORD: Kiet0903602175
+      MYSQL_DATABASE: depotV6_development
+    ports:
+      - "8080:3306"
     volumes:
-      - db:/root/db
+      - ./db_volume/mysql_data:var/lib/mysql/data
+      - ./db_volume/mysql_config/mysql.cnf
     stdin_open: true
     tty: true
 
