@@ -4,6 +4,7 @@ services:
     image: mysql:8.0.29
     environment:
       MYSQL_ROOT_PASSWORD: Kiet0903602175
+      MYSQL_DATABASE: depotV6_production
     ports:
       - "3306:3306"
     volumes:
@@ -18,22 +19,26 @@ services:
       dockerfile: Dockerfile
       args:
         RAILS_MASTER_KEY: $DEPOTV6_RAILS_MASTER_KEY
+    command: "bundle exec puma -C config/puma.rb"
+    environment:
+      RAILS_LOG_TO_STDOUT: "true"
     env_file:
       - .env
     volumes:
-      - .:/depotV6
+      - ./config:/app/config
+      - ./app:/app/app:cached
     ports:
-      - "3000:3000"
+      - "3000:80"
     depends_on:
       - db
-  nginx:
-    build:
-      context: .
-      dockerfile: ./nginx.Dockerfile
-    depends_on:
-      - web
-    ports:
-      - "8084:80"
+  # nginx:
+  #   build:
+  #     context: .
+  #     dockerfile: ./nginx.Dockerfile
+  #   depends_on:
+  #     - web
+  #   ports:
+  #     - "80:80"
 volumes:
   bundle:
   db:

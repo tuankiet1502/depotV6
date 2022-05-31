@@ -28,6 +28,10 @@ services:
     stdin_open: true
     ports:
       - "3000:3000"
+  redis:
+    image: redis:5.0-alpine
+    ports:
+      - "6379:6379"
 volumes:
   bundle:
   db:

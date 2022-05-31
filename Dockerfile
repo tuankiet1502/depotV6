@@ -18,11 +18,11 @@ RUN gem install bundler
 ARG RAILS_MASTER_KEY=""
 RUN bundle config set deployment 'true'
 RUN bundle config set without 'development test'
-RUN bundle install --jobs 5 --retry 3
+RUN bundle install -j 20 -r 5
 COPY yarn.lock package.json ./
 RUN yarn install
 COPY . /depotV6
 RUN test -z "$RAILS_MASTER_KEY" || RAILS_ENV=$RAILS_ENV bundle exec rake assets:precompile
 EXPOSE 3000 80
 ENTRYPOINT ["bundle", "exec"]
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+CMD ["rails", "server", "-b", "0.0.0.0"]

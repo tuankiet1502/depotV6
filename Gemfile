@@ -34,6 +34,9 @@ gem 'regexp_parser', '~> 2.5'
 gem 'websocket', '~> 1.2', '>= 1.2.9'
 gem 'i18n-js'
 gem 'tzinfo-data'
+gem 'executable-hooks', '~> 1.6'
+gem 'net-pop', '~> 0.1.0'
+gem 'net-imap', '~> 0.2.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '~> 1.11', '>= 1.11.1'
 platforms :mswin do 
