@@ -34,7 +34,8 @@ can participate. Exercise your creativity by creating chatbot
 skills for communicating, information, and fun.
 </p>},
 image_url: 'product.png',
-price: 20.00)
+price: 20.00,
+locale:"en")
 
 User.delete_all
-User.create!(name:"tuankiet", password:"123456", password_confirmation: "123456")
+User.create!(name:"admin", password:"123456", password_confirmation: "123456")

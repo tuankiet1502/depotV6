@@ -13,21 +13,21 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: Kiet0903602175
-  host: localhost
-  port: 3306
+  username: <%= ENV.fetch("DB_USER") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASS") { 'Kiet0903602175' } %>
+  host: <%= ENV.fetch("DB_HOST") { 'db' } %>
+  port: <%= ENV.fetch("DB_PORT") { '3306' } %>
 
 development:
   <<: *default
-  database: depotV6_development
+  database: <%= ENV.fetch("DB_NAME_DEV") { 'depotV6_development' } %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: depotV6_test
+  database: <%= ENV.fetch("DB_NAME_TEST") { 'depotV6_test' } %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -51,4 +51,4 @@ test:
 #
 production:
   <<: *default
-  database: depotV6_production
+  database: <%= ENV.fetch("DB_NAME_PROD") { 'depotV6_production' } %>

@@ -24,14 +24,18 @@ gem 'jbuilder', '~> 2.7'
 gem 'net-smtp', require: false
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
 # Use Active Model has_secure_password
+gem 'timeout', '~> 0.3.0'
+gem 'selenium-webdriver', '~> 4.1'
+gem 'msgpack', '~> 1.5', '>= 1.5.2'
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'rack', '~> 2.2', '>= 2.2.3.1'
+gem 'regexp_parser', '~> 2.5'
+gem 'websocket', '~> 1.2', '>= 1.2.9'
 gem 'i18n-js'
 gem 'tzinfo-data'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '~> 1.11', '>= 1.11.1'
 platforms :mswin do 
   gem "wdm", :group => [:development, :test]
 end
@@ -51,13 +55,10 @@ group :development do
   gem 'spring'
 end
 
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver', '>= 4.0.0.rc1'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# group :test do
+#   # Adds support for Capybara system testing and selenium driver
+#   gem 'capybara', '>= 3.26'
+#   gem 'selenium-webdriver', '>= 4.0.0.rc1'
+#   # Easy installation and use of web drivers to run system tests with browsers
+#   gem 'webdrivers'
+# end

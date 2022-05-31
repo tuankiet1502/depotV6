@@ -9,11 +9,11 @@ Bundler.require(*Rails.groups)
 module DepotV6
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.web_console.permissions = '172.19.0.1'
     config.load_defaults 6.1
     config.filter_parameters += [ :credit_card_number ]
     config.middleware.use I18n::JS::Middleware
     config.autoload_paths += %W(#{Rails.root}/lib)
+    config.assets.initialize_on_precompile = false
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
