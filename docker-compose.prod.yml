@@ -13,7 +13,8 @@ services:
     stdin_open: true
     tty: true
 
-  web: &rails
+  web: &web
+    image: depotv6_web:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,21 +25,15 @@ services:
       RAILS_LOG_TO_STDOUT: "true"
     env_file:
       - .env
-    volumes:
-      - ./config:/app/config
-      - ./app:/app/app:cached
     ports:
-      - "3000:80"
+      - "3000:3000"
     depends_on:
       - db
-  # nginx:
-  #   build:
-  #     context: .
-  #     dockerfile: ./nginx.Dockerfile
-  #   depends_on:
-  #     - web
-  #   ports:
-  #     - "80:80"
+      - redis
+  redis:
+    image: redis:5.0-alpine
+    ports:
+      - "6379:6379"
 volumes:
   bundle:
   db:
